@@ -1,7 +1,6 @@
 <template>
-
   <!--要进行表单提交，否则监控实现不对 -->
-   <div>
+  <div>
     <h1>包裹入库</h1>
     <a-form :form="form" @submit="toPackageSubmit">
       <a-form-item label="运单号" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
@@ -15,7 +14,7 @@
       <a-form-item label="收件人" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
         <a-input
           v-decorator="[
-          'receiver',
+          'recipient',
           {rules: [{ required: true, message: '请输入收件人姓名' }]}
         ]"
         />
@@ -37,11 +36,11 @@
         />
       </a-form-item>
       <a-form-item :wrapper-col="{ span: 12, offset: 5 }">
-        <a-button type="primary" html-type='submit'>Submit</a-button>
+        <a-button type="primary" html-type="submit">Submit</a-button>
       </a-form-item>
     </a-form>
   </div>
-   <!-- <div id="ToResponsitory">
+  <!-- <div id="ToResponsitory">
         <h>包裹入库</h>
   
          <div>
@@ -57,27 +56,29 @@
             <h4>重量：<input type="text" v-model="weight" v-on:oninput ="inputWeight" placeholder="请输入重量"> </h4>
         </div> 
 
-  </div>       -->
+  </div>-->
 </template>
 
 
 <script>
- 
-
 export default {
-  name: 'toresponsitory',
-  components: {
+  name: "toresponsitory",
+  components: {},
+  data() {
+    return {
+      form: this.$form.createForm(this)
+    };
   },
- methods: {
+  methods: {
     toPackageSubmit(e) {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          window.console.log(values)
-         this.$store.dispatch('addMsg',values)
+          window.console.log(values);
+          this.$store.dispatch("addMsg", values);
         }
       });
     }
   }
-}
+};
 </script>

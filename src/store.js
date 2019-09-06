@@ -16,7 +16,8 @@ export default new Vuex.Store({
   },
   actions: {
     addMsg(store, form) {
-      axios.post("http://localhost:8080/packagers", form)
+      alert(form.recipient)
+      axios.post("http://localhost:8080/topackages", form)
     },   
     updateTime(store, form) {
  
